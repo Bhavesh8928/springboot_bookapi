@@ -3,6 +3,7 @@ package com.book.controller;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.book.modal.Book;
 import com.book.service.BookService;
@@ -34,12 +35,12 @@ public class BookController {
 	}
 
 	@PutMapping("/books")
-	public Book updateBook(@RequestBody Book book) {
+	public Book updateBook(@RequestBody Book book) throws IllegalAccessException {
 		return bookService.editBook(book);
 	}
 
 	@DeleteMapping("/books/{bookId}")
-	public String deleteBook(@PathVariable long bookId) {
+	public String deleteBook(@PathVariable long bookId) throws IllegalAccessException {
 		return bookService.deleteBook(bookId);
 	}
 }
